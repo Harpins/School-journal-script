@@ -45,8 +45,8 @@ lesson = 'Краеведение'
 Измените `PRAISES` и/или дополните его [строковым](https://pythonexamples.org/python-list-of-strings/) содержимым по вашему усмотрению.
 - Создайте БД командой `python3 manage.py migrate`
 - Запустите сервер командой `python3 manage.py runserver`
-- Создайте новое окно терминала (Ctrl+Shift+P в VSCode, Ctrl+Shift+`(обратная кавычка) в PyCharm)
-- Зайдите в Shell:
+- Создайте новое окно терминала (Ctrl+Shift+P в VSCode, Ctrl+Shift+`(обратная кавычка) в PyCharm), чтобы не останавливать сервер.
+- Зайдите в Shell в новом окне терминала:
 ```pycon
 python3 manage.py shell
 ```
