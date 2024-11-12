@@ -51,24 +51,21 @@ def create_commendation(kid, lesson):
 
 
 def check_name(name):
-    kid = []
     try:
         kid = Schoolkid.objects.get(full_name__contains=name)
     except Schoolkid.DoesNotExist:
-        print('Проверьте корректность ввода имени')
+        raise Schoolkid.DoesNotExist('Такого ученика в списке нет')
     except Schoolkid.MultipleObjectsReturned:
-        print('В списке более одного ученика с таким именем. Введите имя в формате "Фамилия Имя Отчество"')
+        raise Schoolkid.MultipleObjectsReturned(
+            'Найдено несколько учеников, уточните ФИО')
     return kid
 
 
 def main():
     your_name = 'Фролов Иван'
     kid = check_name(your_name)
-    try:
-        year_of_study = kid.year_of_study
-        group_letter = kid.group_letter
-    except AttributeError:
-        return
+    year_of_study = kid.year_of_study
+    group_letter = kid.group_letter
     subject = random.choice(SUBJECTS)
     recent_lesson = Lesson.objects.filter(year_of_study=year_of_study,
                                           group_letter=group_letter,
